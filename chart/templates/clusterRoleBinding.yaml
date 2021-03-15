@@ -1,0 +1,13 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "dns-debug.fullname" . }}
+subjects:
+- kind: User
+  name: {{ .Values.serviceAccount }}
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: {{ include "dns-debug.fullname" . }}
+  apiGroup: rbac.authorization.k8s.io
